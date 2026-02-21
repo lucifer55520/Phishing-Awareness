@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { background: #121212; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        #box { background: #2c2f3b; width: 85%; padding: 25px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        button { background: none; border: none; color: #8ab4f8; font-size: 20px; font-weight: bold; width: 100%; border-top: 1px solid #444; margin-top: 20px; padding-top: 15px; }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <h2 id="title">Test message</h2>
+        <p id="text">Emergency Alert System: Critical software update required to maintain campus connectivity.</p>
+        <button onclick="trap()">OK</button>
+    </div>
+
+    <script>
+        function trap() {
+            // Change UI to Red
+            document.body.style.background = "#800";
+            document.getElementById('title').innerText = "YOU ARE PHISHED";
+            document.getElementById('text').innerText = "Loop Active. Security compromised.";
+            
+            if(navigator.vibrate) navigator.vibrate([200, 100, 200]);
+
+            // Create the 5-minute loop effect
+            let box = document.getElementById('box');
+            box.style.display = 'none';
+            setTimeout(() => { box.style.display = 'block'; }, 400);
+        }
+    </script>
+</body>
+</html>
